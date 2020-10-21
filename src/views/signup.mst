@@ -18,16 +18,24 @@
 </div>
 {{/nameExists}}
 
-<form action="/signup" method="POST">
-    <div class="form-group">
-        <label for="name">Your name</label>
-        <input type="text" class="form-control form-control-lg text-center" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name..." required>
-        <small id="nameHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
-    </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="acceptRules" required>
-        <label class="form-check-label" for="acceptRules">I agree to the rules?</label>
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Start</button>
-</form>
+<div class="card text-white bg-dark mt-3"">
+  <div class="card-body">
+    <p class="card-text">
+
+    <form action="/signup" method="POST">
+      <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" class="form-control form-control-lg text-center" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name..." pattern="[A-Za-z]{1,10}" title="Name should only contain letters with no numbers or spaces." required>
+          <small id="nameHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
+      </div>
+      <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="acceptRules" required>
+          <label class="form-check-label" for="acceptRules">I agree to the rules?</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Start</button>
+    </form>
+    
+    </p>
+  </div>
+</div>
 {{> footer}}

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 require('dotenv').config();
 
 const express = require('express');
@@ -23,13 +24,25 @@ app.use(bodyParser.urlencoded({
 }));
 
 const players = db.get('players');
+const locations = db.get('locations');
 
 app.get('/', async (req, res) => {
   if (req.cookies.playerId === undefined) {
-    res.render('signup.mst');
+    res.redirect('/signup');
   } else {
-    const player = await players.find({ _id: req.cookies.playerId });
-    res.render('index.mst', { player });
+    const player = await players.findOne({ _id: req.cookies.playerId });
+    const availableLocations = await locations.find({});
+
+    player.locations.forEach((playerLocation) => {
+      const objIndex = availableLocations.findIndex(((obj) => obj._id.equals(playerLocation.id)));
+      if (objIndex !== undefined) {
+        availableLocations[objIndex].found = true;
+      }
+    });
+
+    console.log(availableLocations);
+
+    res.render('index.mst', { player, locations: availableLocations });
   }
 });
 
@@ -45,7 +58,7 @@ app.post('/signup', async (req, res) => {
   if (req.body.name !== undefined) {
     const name = req.body.name.toLowerCase();
     if (await players.count({ name }) === 0) {
-      const player = await players.insert({ name });
+      const player = await players.insert({ name, locations: [] });
 
       res
         .cookie('playerId', player._id)
@@ -59,6 +72,42 @@ app.post('/signup', async (req, res) => {
 app.get('/logout', async (req, res) => {
   res.clearCookie('playerId');
   res.redirect('/');
+});
+
+app.get('/location/:id', async (req, res) => {
+  if (req.cookies.playerId === undefined) {
+    res.redirect('/signup');
+  } else {
+    const player = await players.findOne({ _id: req.cookies.playerId });
+    const location = await locations.findOne({ _id: req.params.id });
+
+    let found = false;
+    player.locations.forEach((playerLocation) => {
+      if (location._id.equals(playerLocation.id)) {
+        found = true;
+      }
+    });
+    console.log(found);
+
+    res.render('location.mst', { player, location, found });
+  }
+});
+
+app.post('/location/:id', async (req, res) => {
+  if (req.cookies.playerId === undefined) {
+    res.redirect('/signup');
+  } else {
+    const player = await players.findOne({ _id: req.cookies.playerId });
+    const location = await locations.findOne({ _id: req.params.id });
+
+    if (req.body.code.toLowerCase() === location.code.toLowerCase()) {
+      player.locations.push({ id: location._id, found: true });
+      await players.update({ _id: player._id }, { $set: { locations: player.locations } });
+      res.redirect('/');
+    } else {
+      res.render('location.mst', { player, location, invalidCode: true });
+    }
+  }
 });
 
 app.listen(port, () => {

@@ -1,0 +1,18 @@
+[
+{
+    "_id" : ObjectId("5f8f505db21f643550cbbee5"),
+    "gridRef" : "935 937",
+    "clue" : "If you are a Beaver, Cub or Scout, you would go here once a week!",
+    "image" : "/locations/1.jpg",
+    "code" : "12KK",
+    "name" : "1st Haughton Green Scout Hut"
+},
+{
+    "_id" : ObjectId("5f8f50784dd369356e318608"),
+    "gridRef" : "939 937",
+    "clue" : "Somewhere 2",
+    "image" : "/locations/1.jpg",
+    "code" : "AAAA",
+    "name" : "Green Bridge"
+}
+]

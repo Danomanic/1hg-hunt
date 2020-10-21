@@ -30,21 +30,15 @@
                     <h4>Find the following:</h4>
                 </div>
             </div>
+
+            {{#locations}}
             <div class="row">
                 <div class="col-sm pt-3">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-location-arrow"></i> 935 937</button>
+                    <a href="/location/{{_id}}" type="button" class="btn {{#found}}btn-success{{/found}}{{^found}}btn-primary{{/found}} btn-lg btn-block"><i class="fa {{#found}}fa-check{{/found}}{{^found}}fa-location-arrow{{/found}}"></i> {{gridRef}}</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm pt-3">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-location-arrow"></i> 939 937</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm pt-3">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-location-arrow"></i> 937 934</button>
-                </div>
-            </div>
+            {{/locations}}
+
             <hr />
             <div class="row">
                 <div class="col-sm pt-3">
