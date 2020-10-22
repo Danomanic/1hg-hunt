@@ -19,7 +19,10 @@
   </div>
   {{/nameExists}}
 
-  <div class="card text-white bg-dark mt-3"">
+  <div class="card bg-dark text-white mt-3"">
+    <div class="card-header">
+      Start Playing...
+    </div>
     <div class="card-body">
       <p class="card-text">
 
