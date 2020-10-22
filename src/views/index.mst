@@ -1,8 +1,8 @@
 {{> header}}
 
   <div class="container py-2 bg-scout-teal text-white text-center">
-    <h1>10</h1>
-    <p class="lead">Score</p>
+    <h1 class="m-0">10</h1>
+    <p class="lead p-0 m-0">Score</p>
   </div>
 
 
