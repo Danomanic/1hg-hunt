@@ -2,27 +2,29 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
 
-    <title>Haughton Green Treaure Hunt</title>
+  <title>Haughton Green Treaure Hunt</title>
 </head>
 
 <body>
 
 
-    <div class="container">
-        <div class="text-center mt-3" id="banner">
-            <div class="row">
-                <div class="col-sm">
-                    <h1>Treasure Hunt</h1>
-                    <p class="lead">Haughton Green</p>
-                </div>
-            </div>
-            <hr>
+  <div class="container-fluid bg-primary pt-4 text-white">
+      <div class="text-center mt-0" id="banner">
+          <div class="row ">
+              <div class="col-sm ">
+                  <h1>Treasure Hunt</h1>
+                  <p class="lead">Haughton Green</p>
+              </div>
+          </div>
+      </div>
+  </div>
+      

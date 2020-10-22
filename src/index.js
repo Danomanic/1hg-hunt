@@ -40,8 +40,6 @@ app.get('/', async (req, res) => {
       }
     });
 
-    console.log(availableLocations);
-
     res.render('index.mst', { player, locations: availableLocations });
   }
 });

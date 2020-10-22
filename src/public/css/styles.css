@@ -1,3 +1,14 @@
+body,html {
+    padding: 0;
+}
 p, label, strong {
     font-size: 1.2em;
+}
+
+.grey {
+    background-color: #f0f0f0;
+}
+
+.bg-scout-teal {
+    background-color: #00a794;
 }

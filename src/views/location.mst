@@ -1,61 +1,67 @@
 {{> header}}
 
 {{#location}}
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{gridRef}}</li>
-  </ol>
-</nav>
-
-<p class="lead">Grid Reference</p>
-<h1>{{gridRef}}</h1>
-
-
-<hr />
-
-<p class="lead">Clue</p>
-<p>{{clue}}</p>
-
-<hr />
-
-{{#found}}
-  <div class="alert alert-dismissible alert-success">
-    <strong>Well done!</strong> You have already found this location.</a>.
+<div class="grey">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb rounded-0 border-0 px-0">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{gridRef}}</li>
+      </ol>
+    </nav>
   </div>
+</div>
+<div class="container text-center">
+  <p class="lead">Grid Reference</p>
+  <h3><i class="fa {{#found}}fa-check{{/found}}{{^found}}fa-location-arrow{{/found}}"></i></h3>
+  <h1>{{gridRef}}</h1>
 
-{{/found}}
-{{^found}}
-  {{#invalidCode}}
-  <div class="alert alert-dismissible alert-warning">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4 class="alert-heading">Invalid Code</h4>
-    <p class="mb-0">The code you entered is invalid. Make sure it is four characters long. It will be clearly shown on the bottom of the poster.</p>
-  </div>
-  {{/invalidCode}}
 
-  <div class="card bg-dark mb-3 text-white">
-    <div class="card-header">
-      Found it?
+  <hr />
+
+  <p class="lead">Clue</p>
+  <p>{{clue}}</p>
+
+  <hr />
+
+  {{#found}}
+    <div class="alert alert-dismissible alert-success">
+      <strong>Well done!</strong> You have already found this location.</a>.
     </div>
-    <div class="card-body card-primary">
-      <p class="card-text">
-        <form action="/location/{{_id}}" method="POST">
-            <div class="form-group">
-                <label for="code">Location Code</label>
-                <input type="text" class="form-control form-control-lg text-center" style="text-transform: uppercase" id="code" name="code" aria-describedby="codeHelp" placeholder="Enter code..." pattern="[a-zA-Z0-9]{4}" title="The code will be 4 characters long containing letters and numbers." required />
-                <small id="codeHelp" class="form-text text-muted">You will find this on the small poster.</small>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Code</button>
-        </form>
-      </p>
+
+  {{/found}}
+  {{^found}}
+    {{#invalidCode}}
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4 class="alert-heading">Invalid Code</h4>
+      <p class="mb-0">The code you entered is invalid. Make sure it is four characters long. It will be clearly shown on the bottom of the poster.</p>
     </div>
-  </div>
-{{/found}}
+    {{/invalidCode}}
 
-<hr />
+    <div class="card bg-dark mb-3 text-white">
+      <div class="card-header">
+        Found it?
+      </div>
+      <div class="card-body card-primary">
+        <p class="card-text">
+          <form action="/location/{{_id}}" method="POST">
+              <div class="form-group">
+                  <label for="code">Location Code</label>
+                  <input type="text" class="form-control form-control-lg text-center" style="text-transform: uppercase" id="code" name="code" aria-describedby="codeHelp" placeholder="Enter code..." pattern="[a-zA-Z0-9]{4}" title="The code will be 4 characters long containing letters and numbers." required />
+                  <small id="codeHelp" class="form-text text-muted">You will find this on the small poster.</small>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Code</button>
+          </form>
+        </p>
+      </div>
+    </div>
+  {{/found}}
 
-<a href="/" class="btn btn-secondary btn-lg btn-block">Back</a>
+  <hr />
+
+  <a href="/" class="btn btn-secondary btn-lg btn-block">Back</a>
+</div>
 
 {{/location}}
 
